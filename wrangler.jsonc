@@ -1,0 +1,28 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "uk-tick-tracker",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-10-19",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "services": [
+    // must match "name" above
+    { "binding": "WORKER_SELF_REFERENCE", "service": "uk-tick-tracker" }
+  ],
+  // Sightings: the cleaned Elanco data plus user reports. Locally this is a SQLite
+  // file under .wrangler/; database_id is only needed to deploy (see README).
+  "d1_databases": [{ "binding": "DB", "database_name": "uk-tick-tracker", "database_id": "local" }],
+  "kv_namespaces": [
+    // Photos attached to reports, and the per-IP submission limit
+    { "binding": "UPLOADS", "id": "local" },
+    // Next.js cache
+    { "binding": "NEXT_INC_CACHE_KV", "id": "local" }
+  ],
+  "vars": {
+    "SOURCE_API_URL": "https://dev-task.elancoapps.com/data"
+  },
+  "observability": { "enabled": true }
+}
