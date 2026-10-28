@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+:root {
+  /* light-dark() follows color-scheme: the system setting, unless data-theme overrides it */
+  color-scheme: light dark;
+  /* Heathland: lichen paper, moss ink, fern for actions */
+  --paper: light-dark(#f3f5ee, #111814);
+  --panel: light-dark(#fbfcf8, #18211c);
+  --ink: light-dark(#1f2b24, #e3eae4);
+  --muted: light-dark(#5d6b62, #9aa99f);
+  --rule: light-dark(#d5ddd2, #2a362f);
+  --fern: light-dark(#2e5e45, #7fc29b);
+  --fern-soft: light-dark(#e2ebe1, #1f3128);
+  --on-fern: light-dark(#ffffff, #0d1511);
+  /* Accents for charts and notices */
+  --ochre: light-dark(#a8740f, #e2b04a);
+  --plum: light-dark(#8e1f3d, #ee7894);
+  /* Marker fills carry white numbers, so they stay dark enough (4.5:1+) in both themes */
+  --mark-recent: #8e1f3d;
+  --mark-year: #8a5a00;
+  --mark-quiet: #55695c;
+  --warn-soft: light-dark(#fbf1dc, #33280f);
+  --error-soft: light-dark(#f8e4ea, #3a1620);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-panel: var(--panel);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-rule: var(--rule);
+  --color-fern: var(--fern);
+  --color-fern-soft: var(--fern-soft);
+  --color-on-fern: var(--on-fern);
+  --color-ochre: var(--ochre);
+  --color-plum: var(--plum);
+  --color-warn-soft: var(--warn-soft);
+  --color-error-soft: var(--error-soft);
+  --font-sans: "Atkinson Hyperlegible Next Variable", ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+  outline: 3px solid var(--fern);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Leaflet: match the page instead of its default chrome */
+.leaflet-container {
+  font-family: var(--font-sans);
+  background: var(--paper);
+}
+.leaflet-control-attribution {
+  font-size: 11px;
+}
+.leaflet-control-zoom a {
+  color: var(--ink) !important;
+  background: var(--panel) !important;
+  border-color: var(--rule) !important;
+}
+.tick-marker {
+  background: none;
+  border: none;
+}
+.tick-marker:focus-visible {
+  outline: none;
+}
+.tick-marker:focus-visible > span {
+  outline: 3px solid var(--ink);
+  outline-offset: 2px;
+}
