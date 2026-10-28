@@ -8,11 +8,12 @@ import { ACTIVITY, activityOf } from "@/lib/activity";
 import type { CityStat } from "@/lib/db/queries";
 import { formatDay, plural } from "@/lib/format";
 import type { Sighting } from "@/lib/sightings";
+import { TILE_ATTRIBUTION, TILE_MAX_ZOOM, TILE_URL } from "./tiles";
 
 const UK_CENTRE: [number, number] = [54.4, -3.4];
 const UK_LIMITS = L.latLngBounds([48.5, -12], [61.5, 4.5]);
 
-// Basemap follows the page theme, including the in-page toggle
+// Report dots follow the page theme, including the in-page toggle
 function subscribeTheme(onChange: () => void) {
   const media = window.matchMedia("(prefers-color-scheme: dark)");
   media.addEventListener("change", onChange);
@@ -87,12 +88,7 @@ export default function TickMap({ cities, reports, selected, referenceDate, onSe
       className="h-full w-full"
       aria-label="Map of tick sightings by city"
     >
-      <TileLayer
-        key={dark ? "dark" : "light"}
-        url={`https://{s}.basemaps.cartocdn.com/${dark ? "dark_all" : "light_all"}/{z}/{x}/{y}{r}.png`}
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-        subdomains="abcd"
-      />
+      <TileLayer url={TILE_URL} attribution={TILE_ATTRIBUTION} maxZoom={TILE_MAX_ZOOM} />
       <FitToData cities={cities} />
       <FlyTo target={selectedStat} />
 

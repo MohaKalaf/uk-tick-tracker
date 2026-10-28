@@ -77,6 +77,18 @@ body {
 .leaflet-control-attribution {
   font-size: 11px;
 }
+/* OpenStreetMap tiles are colourful; mute them so the markers stand out, and invert them for dark mode */
+.leaflet-tile-pane {
+  filter: grayscale(0.8) contrast(0.9) brightness(1.04);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .leaflet-tile-pane {
+    filter: invert(1) hue-rotate(180deg) grayscale(0.8) brightness(0.85) contrast(0.9);
+  }
+}
+:root[data-theme="dark"] .leaflet-tile-pane {
+  filter: invert(1) hue-rotate(180deg) grayscale(0.8) brightness(0.85) contrast(0.9);
+}
 .leaflet-control-zoom a {
   color: var(--ink) !important;
   background: var(--panel) !important;
