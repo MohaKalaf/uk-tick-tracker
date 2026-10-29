@@ -14,12 +14,12 @@
   ],
   // Sightings: the cleaned Elanco data plus user reports. Locally this is a SQLite
   // file under .wrangler/; database_id is only needed to deploy (see README).
-  "d1_databases": [{ "binding": "DB", "database_name": "uk-tick-tracker", "database_id": "local" }],
+  "d1_databases": [{ "binding": "DB", "database_name": "uk-tick-tracker", "database_id": "c06fed08-e869-48f9-96fb-ad8183565809" }],
   "kv_namespaces": [
     // Photos attached to reports, and the per-IP submission limit
-    { "binding": "UPLOADS", "id": "local" },
+    { "binding": "UPLOADS", "id": "7e720e766a8340c09de81e6378054247" },
     // Next.js cache
-    { "binding": "NEXT_INC_CACHE_KV", "id": "local" }
+    { "binding": "NEXT_INC_CACHE_KV", "id": "193a861dfd5d48e5aa428fb396d9dbf9" }
   ],
   "vars": {
     "SOURCE_API_URL": "https://dev-task.elancoapps.com/data"
