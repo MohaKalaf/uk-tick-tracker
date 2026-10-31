@@ -4,11 +4,11 @@ A full-stack MVP for mapping tick sightings across the UK, built by **Mohammad K
 placement task. Pet owners and vets can see where ticks have been reported, learn to identify them, and report
 their own sightings.
 
-Live at **https://ticks.mohammadkalaf.com** (currently inactive)
+Live at **https://ticks.mohammadkalaf.com**
 
 Video walkthrough (about 10 minutes): **(still making it)**
 
-![Map with sightings by city and the details panel for one city](docs/screenshots/map.png)
+![screenshot of the main page](<./docs/screenshots/main page.png>)
 
 ## Run it locally
 
